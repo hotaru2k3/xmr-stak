@@ -1,0 +1,13 @@
+[Unit]
+Description=xmr-stak-cpu Monero miner
+After=network.target nss-lookup.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/xmr-stak -c /etc/xmr-stak/config.txt -C /etc/xmr-stak/pools.txt --cpu /tmp/cpu.txt
+KillMode=process
+LimitMEMLOCK=268435456
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

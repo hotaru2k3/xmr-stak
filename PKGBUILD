@@ -9,10 +9,12 @@ makedepends=('git' 'cmake' 'opencl-headers')
 depends=('libmicrohttpd' 'openssl' 'hwloc' 'ocl-icd')
 source=('git+https://github.com/fireice-uk/xmr-stak.git'
         'xmr-stak.service'
-        'no-donate.patch')
+        'no-donate.patch'
+	'mesa.patch')
 sha256sums=('SKIP'
             '993e6f5e9f6ccdfabe9e2e98776deadc40a718b8b18fc3be15c21310b31762e5'
-            'b279c373afbce7cc8610c44f69a5e29a4b36969d131e2fd47229211a3903912a')
+            'b279c373afbce7cc8610c44f69a5e29a4b36969d131e2fd47229211a3903912a'
+            'c55d301dc5ea923c13ff9b15a46ded10806889890ffa6c72ab3395b3383de476')
 
 pkgver() {
     cd "$srcdir/xmr-stak"
@@ -22,6 +24,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/xmr-stak"
     #patch -p1 -i ../no-donate.patch
+    patch -p1 -i ../mesa.patch
 }
 
 build() {

@@ -1,0 +1,33 @@
+diff -uNr a/xmrstak/backend/amd/amd_gpu/opencl/cryptonight.cl b/xmrstak/backend/amd/amd_gpu/opencl/cryptonight.cl
+--- a/xmrstak/backend/amd/amd_gpu/opencl/cryptonight.cl	2018-05-14 14:51:23.447539770 -0400
++++ b/xmrstak/backend/amd/amd_gpu/opencl/cryptonight.cl	2018-05-14 14:52:25.774173078 -0400
+@@ -19,9 +19,6 @@
+ #	pragma OPENCL EXTENSION cl_clang_storage_class_specifiers : enable
+ #endif
+ 
+-#ifdef cl_amd_media_ops
+-#pragma OPENCL EXTENSION cl_amd_media_ops : enable
+-#else
+ /* taken from https://www.khronos.org/registry/OpenCL/extensions/amd/cl_amd_media_ops.txt
+  * Build-in Function
+  *     uintn  amd_bitalign (uintn src0, uintn src1, uintn src2)
+@@ -39,11 +36,7 @@
+ 	result.s1 =  (uint) (((((long)src0.s1) << 32) | (long)src1.s1) >> (src2));
+ 	return result;
+ }
+-#endif
+ 
+-#ifdef cl_amd_media_ops2
+-#pragma OPENCL EXTENSION cl_amd_media_ops2 : enable
+-#else
+ /* taken from: https://www.khronos.org/registry/OpenCL/extensions/amd/cl_amd_media_ops2.txt
+  *     Built-in Function:
+  *     uintn amd_bfe (uintn src0, uintn src1, uintn src2)
+@@ -76,7 +69,6 @@
+ 
+ 	return src0 >> offset;
+ }
+-#endif
+ 
+ //#include "opencl/wolf-aes.cl"
+ XMRSTAK_INCLUDE_WOLF_AES

@@ -29,7 +29,7 @@ prepare() {
 
 build() {
     cd "$srcdir/xmr-stak"
-    CC=/bin/gcc-6 CXX=/bin/g++-6 cmake . -DXMR-STAK_COMPILE=generic -DCUDA_ENABLE=OFF
+    CC=/bin/gcc-6 CXX=/bin/g++-6 cmake . -DXMR-STAK_COMPILE=generic
     make
 }
 

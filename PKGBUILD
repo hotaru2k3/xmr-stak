@@ -24,7 +24,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/xmr-stak"
     #patch -p1 -i ../no-donate.patch
-    patch -p1 -i ../mesa.patch
+    #patch -p1 -i ../mesa.patch
 }
 
 build() {
